@@ -2,9 +2,9 @@ package com.demo.model;
 
 import java.io.*;
 
-public class sup {
+public class support {
 
-  public sup() {
+  public support() {
   }
 
   public static void out(String content) {

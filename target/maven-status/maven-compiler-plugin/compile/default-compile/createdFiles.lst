@@ -1,3 +1,5 @@
-com/demo/model/sup.class
-resource/App.class
+com/demo/model/Person.class
+com/demo/dao/PersonDAO.class
+com/demo/resource/App.class
 com/demo/App/App.class
+com/demo/model/support.class
