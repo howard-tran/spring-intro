@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="false">
+
+  <appender name="default.console" class="org.apache.log4j.ConsoleAppender">
+    <param name="target" value="System.out" />
+    <param name="threshold" value="debug" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ISO8601} %-5p [%c{1}] - %m%n" />
+    </layout>
+  </appender>
+
+  <appender name="default.file" class="org.apache.log4j.FileAppender">
+    <param name="file" value="/log/project.log" />
+    <param name="append" value="false" />
+    <param name="threshold" value="debug" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ISO8601} %-5p [%c{1}] - %m%n" />
+    </layout>
+  </appender>
+
+  <appender name="another.file" class="org.apache.log4j.FileAppender">
+    <param name="file" value="/log/backup.log" />
+    <param name="append" value="false" />
+    <param name="threshold" value="debug" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ISO8601} %-5p [%c{1}] - %m%n" />
+    </layout>
+  </appender>
+
+  <logger name="com.demo.App" additivity="false">
+    <level value="debug" />
+    <appender-ref ref="another.file" />
+  </logger>
+
+  <root>
+    <priority value="info" />
+    <appender-ref ref="default.console" />
+    <appender-ref ref="default.file" />
+  </root>
+</log4j:configuration>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>spring</groupId>
@@ -40,6 +81,21 @@
       <artifactId>spring-boot-starter-web</artifactId>
       <version>2.2.5.RELEASE</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongo-java-driver</artifactId>
+      <version>3.12.7</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+
 
   </dependencies>
 
@@ -173,6 +229,8 @@
         </plugin>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
+        <!-- spring-boot deploy -->
+
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
