@@ -9,6 +9,7 @@ import com.demo.model.Person;
 import com.demo.model.Response;
 import com.demo.model.Response.ErrorType;
 import com.demo.service.PersonService;
+import com.demo.api.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("api/v1/person")
+@RequestMapping(value = { VersionHelper.V1 + "person" })
 @RestController
 public class PersonController {
   private final PersonService _personService;
