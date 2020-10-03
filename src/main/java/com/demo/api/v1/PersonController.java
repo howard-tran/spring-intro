@@ -29,10 +29,10 @@ public class PersonController {
   }
 
   @PostMapping(path = "add")
-  public void addPerson(@Valid @NotNull @RequestBody Person _person) {
+  public Response<Object> addPerson(@Valid @NotNull @RequestBody Person _person) {
     _personService.addPerson(_person);
 
-    System.out.println(_person.getName());
+    return new Response<Object>("", ErrorType.OK);
   }
 
   @GetMapping(path = "getAll")
@@ -41,14 +41,18 @@ public class PersonController {
   }
 
   @PostMapping(path = "remove")
-  public void removePerson(@RequestParam(name = "id", required = true) UUID id) {
+  public Response<Object> removePerson(@RequestParam(name = "id", required = true) UUID id) {
     _personService.deletePersonById(id);
+
+    return new Response<Object>("", ErrorType.OK);
   }
 
   @PostMapping(path = "update")
-  public void updatePerson(@RequestParam(name = "id", required = true) UUID id,
+  public Response<Object> updatePerson(@RequestParam(name = "id", required = true) UUID id,
       @Valid @NotNull @RequestBody Person newPerson) {
     _personService.updatePersonById(id, newPerson);
+
+    return new Response<Object>("", ErrorType.OK);
   }
 
   @GetMapping(path = "get")

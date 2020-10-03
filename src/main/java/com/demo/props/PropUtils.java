@@ -6,8 +6,10 @@ import java.io.InputStream;
 import java.util.Optional;
 import java.util.Properties;
 
+import com.demo.LogManager.LogUtils;
+
 public class PropUtils {
-  static public Optional<String> getProperty(String property) throws IOException {
+  static public Optional<String> getProperty(String property) throws Exception {
     Properties propGet = new Properties();
 
     InputStream inputStream = PropUtils.class.getResourceAsStream("project.properties");

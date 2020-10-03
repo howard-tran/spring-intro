@@ -2,8 +2,7 @@ package com.demo.service;
 
 import java.util.*;
 
-import javax.print.attribute.standard.MediaSize.Other;
-
+import com.demo.LogManager.*;
 import com.demo.dao.*;
 import com.demo.model.Person;
 
@@ -13,30 +12,66 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PersonService {
-  private final ObjectDAO<Person> _personDAO;
+  private final PersonDAO _personDAO;
 
   @Autowired
-  PersonService(@Qualifier("PersonTable") ObjectDAO<Person> _personDAO) {
+  PersonService(@Qualifier("Person") PersonDAO _personDAO) {
     this._personDAO = _personDAO;
   }
 
-  public int addPerson(Person _person) {
-    return _personDAO.add(_person);
+  public void addPerson(Person _person) {
+    try {
+      PersonDAOImpl.class.cast(_personDAO).insert(_person);
+      //
+    } catch (Exception e) {
+      LogUtils.logger.error("[ERROR]", e);
+      throw new RuntimeException(e);
+    }
   }
 
   public List<Person> getAllPerson() {
-    return PersonDAO.class.cast(_personDAO).getAllPerson();
+    List<Person> res = null;
+    try {
+      res = PersonDAOImpl.class.cast(_personDAO).getAllPerson();
+      //
+    } catch (Exception e) {
+      LogUtils.logger.error("[ERROR]", e);
+      throw new RuntimeException(e);
+    }
+
+    return res;
   }
 
   public Optional<Person> getPersonById(UUID id) {
-    return PersonDAO.class.cast(_personDAO).getPersonById(id);
+    Optional<Person> res = null;
+
+    try {
+      res = _personDAO.getPersonById(id);
+      //
+    } catch (Exception e) {
+      LogUtils.logger.error("[ERROR]", e);
+      throw new RuntimeException(e);
+    }
+    return res;
   }
 
-  public int deletePersonById(UUID id) {
-    return PersonDAO.class.cast(_personDAO).delete(id);
+  public void deletePersonById(UUID id) {
+    try {
+      _personDAO.delete(id);
+      //
+    } catch (Exception e) {
+      LogUtils.logger.error("[ERROR]", e);
+      throw new RuntimeException(e);
+    }
   }
 
-  public int updatePersonById(UUID id, Person newPerson) {
-    return PersonDAO.class.cast(_personDAO).update(id, newPerson);
+  public void updatePersonById(UUID id, Person newPerson) {
+    try {
+      _personDAO.update(id, newPerson);
+      //
+    } catch (Exception e) {
+      LogUtils.logger.error("[ERROR]", e);
+      throw new RuntimeException(e);
+    }
   }
 }

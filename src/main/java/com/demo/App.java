@@ -1,40 +1,32 @@
 package com.demo;
 
-import java.util.Optional;
-import java.util.logging.FileHandler;
+import java.io.Console;
+import java.util.logging.LogManager;
+
+import com.demo.LogManager.LogUtils;
+
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.spi.Configurator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.client.*;
-import org.bson.*;
-
-import com.demo.log.LogUtils;
-import com.demo.props.*;
+import ch.qos.logback.classic.BasicConfigurator;
 
 @SpringBootApplication
 public class App {
 
   public static void main(String[] args) throws Exception {
-    // SpringApplication.run(App.class, args);
+    // setup project logger
+    PropertyConfigurator.configure(LogUtils.class.getResource("log4j.properties"));
 
-    Optional<String> connectionString = PropUtils.getProperty("connectionString");
+    Logger mongoLogger = Logger.getLogger(App.class);
+    mongoLogger.setLevel(Level.ERROR);
 
-    if (!connectionString.isEmpty()) {
-      MongoClientURI mongoUri = new MongoClientURI(connectionString.get());
-      MongoClient mongoClient = new MongoClient(mongoUri);
+    SpringApplication.run(App.class, args);
 
-      MongoDatabase dtb = mongoClient.getDatabase("test-spring");
-
-      MongoCollection<Document> collections = dtb.getCollection("person");
-
-      for (Document cur : collections.find()) {
-        System.out.println(cur.toJson());
-      }
-      mongoClient.close();
-    }
+    LogUtils.logger.error("init project", new RuntimeException());
   }
 }

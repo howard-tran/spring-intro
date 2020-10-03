@@ -1,17 +1,13 @@
 package com.demo.dao;
 
 import java.util.*;
-import com.demo.model.Person;
 
 public interface ObjectDAO<T> {
-  int insert(UUID _id, T t);
+  void insert(T t) throws Exception;
 
-  int delete(UUID id);
+  void insertMany(List<T> listT) throws Exception;
 
-  int update(UUID id, T t);
+  void delete(UUID id) throws Exception;
 
-  default int add(T t) {
-    UUID _id = UUID.randomUUID();
-    return insert(_id, t);
-  }
+  void update(UUID id, T t) throws Exception;
 }
