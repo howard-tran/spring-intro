@@ -31,7 +31,7 @@ Cơ chế Logging:
   - cách Log error (tham khảo source code, lớp Service)
 
 Lỗi port server:
-  - servẻ mặc định mở port 5000 trên máy
+  - server mặc định mở port 5000 trên máy
   - nếu port bận, chỉnh lại port khác trong file application.yml
 
 Deadline:
