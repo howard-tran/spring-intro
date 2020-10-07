@@ -1,11 +1,9 @@
 package com.demo.service;
 
-import java.util.*;
-
 import com.demo.LogManager.*;
 import com.demo.dao.*;
 import com.demo.model.Person;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

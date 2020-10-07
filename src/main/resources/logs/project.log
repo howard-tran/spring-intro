@@ -154,3 +154,39 @@ java.lang.RuntimeException
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:282)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+[2020-10-07 10:40:09] [com.demo.App.main()] ERROR com.demo.LogManager.LogUtils  - init project
+java.lang.RuntimeException
+	at com.demo.App.main(App.java:30)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:282)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[2020-10-07 12:18:03] [com.demo.App.main()] ERROR com.demo.LogManager.LogUtils  - init project
+java.lang.RuntimeException
+	at com.demo.App.main(App.java:30)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:282)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[2020-10-07 12:18:17] [com.demo.App.main()] ERROR com.demo.LogManager.LogUtils  - init project
+java.lang.RuntimeException
+	at com.demo.App.main(App.java:30)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:282)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[2020-10-07 12:19:38] [com.demo.App.main()] ERROR com.demo.LogManager.LogUtils  - init project
+java.lang.RuntimeException
+	at com.demo.App.main(App.java:30)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:282)
+	at java.base/java.lang.Thread.run(Thread.java:834)
