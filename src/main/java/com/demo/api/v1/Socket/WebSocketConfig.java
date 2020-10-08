@@ -1,5 +1,7 @@
 package com.demo.api.v1.Socket;
 
+import com.demo.api.VersionHelper;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -14,15 +16,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
   public void registerStompEndpoints(StompEndpointRegistry registry) {
     WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);
 
-    registry.addEndpoint("/secured/room").setAllowedOrigins("*").withSockJS();
+    registry.addEndpoint("/secured").setAllowedOrigins("*").withSockJS();
   }
 
   @Override
   public void configureMessageBroker(MessageBrokerRegistry config) {
     WebSocketMessageBrokerConfigurer.super.configureMessageBroker(config);
 
-    config.enableSimpleBroker("/secured/user/queue/specific-user");
-    config.setApplicationDestinationPrefixes("/spring-security-mvc-socket");
-    config.setUserDestinationPrefix("/secured/user");
+    config.enableSimpleBroker("/topic/", "/queue/");
+    config.setApplicationDestinationPrefixes(VersionHelper.V1 + "chat");
   }
 }

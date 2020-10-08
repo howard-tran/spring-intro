@@ -20,7 +20,7 @@ public class App {
 
   public static void main(String[] args) throws Exception {
     // setup project logger
-    PropertyConfigurator.configure(LogUtils.class.getResource("log4j.properties"));
+    PropertyConfigurator.configure(LogUtils.class.getResource("log4j.properties").getFile());
 
     Logger mongoLogger = Logger.getLogger(App.class);
     mongoLogger.setLevel(Level.ERROR);
